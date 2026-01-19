@@ -1,0 +1,1047 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* =========================================================
+   Theme tokens
+   ========================================================= */
+:root {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+  /* App palette */
+  --bg: #12111b;
+  --bg-2: #181725;
+  --card-surface: #232434;
+  --card-surface-2: #25273a;
+
+  --text: rgba(255, 255, 255, 0.92);
+  --muted-text: rgba(255, 255, 255, 0.62);
+  --faint: rgba(255, 255, 255, 0.42);
+
+  --purple: #6d00cb;
+  --purple-2: #7c3aed;
+
+  --line: rgba(255, 255, 255, 0.06);
+  --line-2: rgba(119, 68, 68, 0.1);
+
+  --r-lg: 18px;
+  --r-md: 14px;
+
+  --shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+  --shadow-soft: 0 8px 28px rgba(0, 0, 0, 0.28);
+
+  --gap: 18px;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-jakarta), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  }
+  html,
+  body {
+    font-family: var(--font-jakarta), system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
+      "Segoe UI Emoji";
+  }
+}
+
+/* =========================================================
+   Page
+   ========================================================= */
+.wc-page {
+  min-height: 100vh;
+  color: var(--text);
+  padding: 40px 28px 60px;
+
+  /* Depthy dark background */
+  background: radial-gradient(900px 600px at 18% 12%, rgba(34, 211, 238, 0.18), transparent 55%),
+    radial-gradient(850px 520px at 82% 20%, rgba(124, 58, 237, 0.18), transparent 60%),
+    radial-gradient(1100px 700px at 50% 92%, rgba(16, 185, 129, 0.1), transparent 60%),
+    linear-gradient(180deg, #0b0b12 0%, #0f1020 45%, #0b0b12 100%);
+
+  font-family: var(--font-jakarta), system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
+    "Segoe UI Emoji";
+}
+
+.step-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(124, 58, 237, 0.92), rgba(109, 40, 217, 0.92));
+  box-shadow: var(--shadow-soft);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Added hero section styles for intro */
+.hero {
+  margin-top: 40px;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.15;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+  font-size: 1.125rem;
+  color: var(--muted-text);
+  line-height: 1.6;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.group-grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(220px, 1fr));
+  gap: var(--gap);
+}
+
+@media (max-width: 1100px) {
+  .group-grid {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
+}
+@media (max-width: 640px) {
+  .group-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   Group card (glass / frosted like the inspiration)
+   ========================================================= */
+.group-card {
+  position: relative;
+  border-radius: var(--r-lg);
+  /* removed overflow: hidden to allow dropdown to escape card bounds */
+  overflow: hidden;
+    isolation: isolate;              /* keeps pseudo layers contained */
+  transform: translateZ(0);        /* forces GPU layer -> cleaner corners */
+  -webkit-mask-image: -webkit-radial-gradient(white, black); /* fixes blur bleed */
+
+
+  /* Frosted glass surface */
+  background: linear-gradient(180deg, rgba(22, 24, 33, 0.72) 0%, rgba(16, 18, 26, 0.58) 100%);
+
+  /* Glass blur */
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+  backdrop-filter: blur(18px) saturate(135%);
+
+  /* Edge + depth */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Soft “color bleed” like the teal/purple glow in the reference */
+.group-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background: radial-gradient(900px 260px at 18% -10%, rgba(45, 212, 191, 0.16), transparent 60%),
+    radial-gradient(700px 220px at 85% 0%, rgba(124, 58, 237, 0.18), transparent 62%),
+    radial-gradient(500px 220px at 55% 120%, rgba(0, 0, 0, 0.35), transparent 60%);
+  opacity: 0.9;
+}
+
+/* Subtle texture so it doesn’t look “flat” */
+.group-card::after {
+  content: "";
+  position: absolute;
+  border-radius: inherit;
+  inset: 0;
+  pointer-events: none;
+
+  /* tiny noise-ish pattern */
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.018) 0px,
+    rgba(255, 255, 255, 0.018) 2px,
+    transparent 2px,
+    transparent 6px
+  );
+  mix-blend-mode: overlay;
+  opacity: 0.25;
+}
+
+.group-tab {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 54px;
+  background: var(--purple);
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.92);
+  letter-spacing: 0.04em;
+}
+
+.group-card__inner {
+  padding: 64px 18px 18px;
+  /* added overflow hidden here to clip card contents but not dropdown */
+  overflow: hidden;
+  border-radius: var(--r-lg);
+}
+
+.group-label {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 14px;
+}
+
+/* =========================================================
+   Team rows
+   (grid columns: handle | A1 pill | flag | name)
+   ========================================================= */
+.team-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 22px 34px 28px 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  /* added z-index for proper stacking when dropdown is open */
+  z-index: 1;
+}
+
+.team-row:first-of-type {
+  border-top: 0;
+}
+
+.team-row:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Drag handle (shows on hover) */
+.drag-handle {
+  width: 18px;
+  height: 18px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transform: translateY(1px);
+  transition: opacity 120ms ease, transform 120ms ease, background 120ms ease;
+}
+
+.drag-icon {
+  width: 16px;
+  height: 16px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Show on hover/focus */
+.team-row:hover .drag-handle,
+.team-row:focus-within .drag-handle {
+  opacity: 1;
+  transform: translateY(0);
+  background: transparent;
+}
+
+/* Dragging row */
+.team-row.dragging {
+  background: rgba(124, 58, 237, 0.14);
+  box-shadow: inset 0 0 0 1px rgba(124, 58, 237, 0.45), 0 12px 28px rgba(0, 0, 0, 0.35);
+  transform: scale(1.01);
+  border-radius: 12px;
+  cursor: grabbing;
+}
+
+.team-row.dragging .drag-handle {
+  opacity: 1;
+  background: rgba(124, 58, 237, 0.12);
+}
+
+.team-row.dragging .drag-icon {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.pos-pill {
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace;
+  width: 34px;
+  height: 22px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.78);
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+}
+
+.flag {
+  width: 24px;
+  height: 18px;
+  border-radius: 6px;
+  position: relative;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* Softer, cleaner edge */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.18);
+
+  overflow: hidden;
+}
+/* -----------------------------------------
+   Unified subtle "waving" for ALL flags
+   (intro + group cards)
+   ----------------------------------------- */
+/* subtle fabric sheen overlay */
+.flag--wavy {
+  position: relative;
+  overflow: hidden;
+}
+
+.flag--wavy::after {
+  content: "";
+  position: absolute;
+  inset: -20% -40%;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.08) 50%, transparent 65%);
+  transform: translateX(-20%);
+  opacity: 0.55;
+  mix-blend-mode: overlay;
+  animation: flagSheen 1.6s ease-in-out infinite;
+}
+
+@keyframes flagSheen {
+  0% {
+    transform: translateX(-20%);
+  }
+  50% {
+    transform: translateX(20%);
+  }
+  100% {
+    transform: translateX(-20%);
+  }
+}
+
+/* -----------------------------------------
+   Fix the "weird border" on intro tiles
+   (keep group card border subtle)
+   ----------------------------------------- */
+/* This class is on the SAME div as .flag */
+.intro-flag-tile {
+  width: 26px;
+  height: 18px;
+  border-radius: 6px;
+
+  will-change: transform;
+  transform-origin: center;
+  border: 0 !important;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.28) inset;
+
+  /* Use CSS vars (set inline in page.tsx) so timing is stable + non-robotic */
+  animation: introTileIn 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both, introTileFloat 2400ms ease-in-out infinite;
+
+  animation-delay: var(--inDelayMs, 0ms), var(--floatDelayMs, 0ms);
+}
+@keyframes introTileFloat {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Drop-in: uses random start offsets */
+@keyframes introDropIn {
+  from {
+    opacity: 0;
+    transform: translate(var(--startX, 0px), var(--startY, 26px)) rotate(var(--rot, 0deg)) scale(0.92);
+    filter: blur(1.5px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0px, 0px) rotate(0deg) scale(1);
+    filter: blur(0px);
+  }
+}
+
+/* Gentle “alive” motion after landing */
+@keyframes introTileFloat {
+  0% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  50% {
+    transform: translate(0px, -2px) rotate(0.6deg);
+  }
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+}
+/* Whole-grid gentle wave so it feels like a unified banner */
+.intro-flags--wave {
+  animation: introWave 2200ms ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+/* Wave as a UNIT (the whole wall moves like fabric) */
+.intro-flags--wave {
+  animation: introWallWave 3200ms ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes introWallWave {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Subtle “fabric shimmer” overlay per tile */
+.flag--wavy::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 45%, transparent 60%);
+  transform: translateX(-30%);
+  opacity: 0.35;
+  filter: blur(0.5px);
+  animation: flagSheen 1800ms ease-in-out infinite;
+}
+
+@keyframes flagSheen {
+  0%,
+  100% {
+    transform: translateX(-30%) skewX(-12deg);
+    opacity: 0.18;
+  }
+  50% {
+    transform: translateX(30%) skewX(-12deg);
+    opacity: 0.38;
+  }
+}
+
+@keyframes introWave {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* When morphing, stop the CSS transform animations
+   so Framer Motion can own the move */
+.intro-flag-handoff {
+  animation: none !important;
+}
+
+/* Fade headline earlier (so it doesn’t linger over the cards) */
+.intro-title.is-fading,
+.intro-subtitle.is-fading,
+.intro-brand.is-fading {
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+/* “Waving as a unit”: all flags share same float phase (2nd delay = 0s) */
+@keyframes introTileFloat {
+  0% {
+    transform: translateY(0px) rotate(-0.2deg);
+  }
+  50% {
+    transform: translateY(-2px) rotate(0.2deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(-0.2deg);
+  }
+}
+
+/* When intro exits: DON'T fight Framer on position.
+   We only fade/blur here; Framer handles the “drop into cards”. */
+@keyframes introTileExit {
+  from {
+    opacity: 1;
+    filter: blur(0px);
+  }
+  to {
+    opacity: 0;
+    filter: blur(1.5px);
+  }
+}
+
+/* During exit: fade each tile center-out using the per-tile CSS var */
+.intro-overlay.is-exiting .intro-flag-tile {
+  animation: introTileIn 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both !important;
+  animation-delay: var(--inDelayMs, 0ms) !important;
+}
+
+.team-name {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+/* =========================================================
+   Dropdown (playoff selection)
+   ========================================================= */
+.dropdown-anchor {
+  position: relative;
+  flex: 1;
+  /* ensure dropdown anchor can stack above other rows */
+  z-index: auto;
+}
+
+.select-btn {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+  font-family: inherit;
+}
+
+.select-btn:hover {
+  opacity: 0.9;
+}
+
+.select-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.select-meta {
+  flex: 1;
+}
+
+.select-value {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.86);
+  line-height: 1.3;
+}
+
+.select-value--placeholder {
+  color: var(--muted-text);
+  font-style: italic;
+}
+
+.select-sub {
+  font-size: 10px;
+  color: var(--faint);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.chev {
+  width: 16px;
+  height: 16px;
+  color: var(--muted-text);
+  flex-shrink: 0;
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  /* increased z-index to ensure dropdown appears above all card content and neighboring cards */
+  z-index: 9999;
+  background: linear-gradient(180deg, var(--card-surface), var(--card-surface-2));
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  border: 1px solid var(--line-2);
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  border-bottom: 1px solid var(--line);
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item:hover {
+  background: rgba(124, 58, 237, 0.18);
+}
+
+.menu-flag {
+  width: 20px;
+  height: 14px;
+  border-radius: 3px;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+}
+
+.menu-name {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.86);
+}
+/* =========================================================
+   Save Bar (centered, same width as cards, higher contrast)
+   ========================================================= */
+.savebar-shell {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 18px;
+  z-index: 60;
+  pointer-events: none; /* lets clicks pass except the bar */
+}
+
+.savebar {
+  pointer-events: auto;
+  width: min(1400px, calc(100% - 56px)); /* matches your max container vibe */
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+
+  padding: 12px 14px;
+  border-radius: 16px;
+
+  /* “highlighted” look (teal/green-ish like your inspiration) */
+  background: radial-gradient(120% 180% at 15% 50%, rgba(34, 211, 238, 0.22), transparent 55%),
+    radial-gradient(120% 180% at 85% 40%, rgba(34, 197, 94, 0.18), transparent 55%), rgba(10, 12, 16, 0.72);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(10px);
+}
+
+.savebar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 200px;
+}
+
+.savebar-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, 0.2);
+  box-shadow: inset 0 0 0 2px rgba(34, 197, 94, 0.45), 0 10px 22px rgba(0, 0, 0, 0.35);
+}
+
+.savebar-text {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 13px;
+  letter-spacing: 0.01em;
+}
+
+.savebar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.savebar-input {
+  max-width: 420px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.savebar-input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.savebar-btn {
+  background: rgba(34, 197, 94, 0.18);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.savebar-btn:hover {
+  background: rgba(34, 197, 94, 0.24);
+}
+
+/* Mobile: stack nicely */
+@media (max-width: 640px) {
+  .savebar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .savebar-left {
+    min-width: unset;
+  }
+  .savebar-right {
+    width: 100%;
+    justify-content: stretch;
+  }
+  .savebar-input {
+    max-width: none;
+  }
+}
+
+/* Touch devices: always show handle */
+@media (hover: none) {
+  .drag-handle {
+    opacity: 1;
+    background: transparent;
+  }
+}
+
+/* Appending new intro CSS section with 3-layer animation system */
+
+/* ============================
+   Intro overlay (centered)
+   ============================ */
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50; /* Very high z-index to ensure it's on top */
+  display: grid;
+  place-items: center;
+  pointer-events: all; /* Block interaction during intro */
+  background: transparent;
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 600ms ease 200ms, transform 600ms ease 200ms, visibility 0s linear 0s; /* Added delay for content to start fading first */
+  visibility: visible;
+}
+
+/* Added is-exiting class behavior - overlay stays visible during cascade */
+.intro-overlay.is-exiting {
+  /* Overlay stays visible while flags cascade out */
+  opacity: 1;
+}
+
+/* Only fade out overlay after cascade completes */
+.intro-overlay.is-done {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.02);
+  visibility: hidden;
+  transition: opacity 600ms ease 200ms, transform 600ms ease 200ms, visibility 0s linear 800ms;
+}
+
+.intro-inner {
+  width: min(980px, calc(100vw - 48px));
+  text-align: center;
+}
+
+.intro-brand {
+  display: grid;
+  place-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.intro-wordmark {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.intro-title {
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1.02;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.94);
+  margin: 0 0 10px 0;
+}
+
+.intro-subtitle {
+  margin: 0 0 26px 0;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+/* Added page-content wrapper styles for stage 2 fade-in */
+.page-content {
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity 400ms ease, transform 400ms ease;
+}
+
+.page-content.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ============================
+   Flags grid (2 even rows)
+   ============================ */
+.intro-flags {
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+}
+
+.intro-flags-row {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 12px;
+  width: min(920px, 100%);
+}
+/* IMPORTANT: during handoff, stop CSS animations so Framer Motion can own transform */
+.intro-flag-handoff {
+  /* Remove the handoff class override - let CSS animations continue */
+  /* Removed: animation: none !important; */
+  /* Removed: transform: none !important; */
+  /* Flags keep animating even during Framer Motion handoff */
+}
+
+@media (max-width: 980px) {
+  .intro-flags-row {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+/* This class is on the SAME div as .flag */
+.intro-flag-tile {
+  width: 26px;
+  height: 18px;
+  border-radius: 6px;
+
+  will-change: transform;
+  transform-origin: center;
+
+  /* Ensure both animations run continuously during intro */
+  animation: introTileIn 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both, introTileFloat 1800ms ease-in-out infinite;
+}
+
+/* Corner-to-center cascade exit animation */
+/* During exit: stop the float (so Framer Motion can own transforms),
+   but still allow opacity to ease out nicely. */
+.intro-overlay.is-exiting .intro-flag-tile {
+  animation: introTileExit 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both !important;
+  animation-delay: var(--exitDelay, 0ms) !important;
+}
+
+/* A soft “drop away” exit (not robotic) */
+@keyframes introTileExit {
+  from {
+    opacity: 1;
+    filter: blur(0px);
+  }
+  to {
+    opacity: 0;
+    filter: blur(1px);
+  }
+}
+
+@keyframes introTileIn {
+  from {
+    opacity: 0;
+    transform: translateY(-14px) scale(0.92);
+    filter: blur(1px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes introTileFloat {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-overlay {
+    transition: opacity 200ms ease, visibility 0s linear 200ms;
+  }
+
+  .intro-overlay.is-done {
+    transition: opacity 200ms ease, visibility 0s linear 200ms;
+  }
+
+  .intro-flag-tile {
+    width: 26px;
+    height: 18px;
+    border-radius: 6px;
+    transform-origin: center;
+    will-change: transform;
+
+    animation: introTileIn 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both, introTileFloat 1800ms ease-in-out infinite;
+  }
+
+  @keyframes introTileFloat {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-7px);
+    }
+  }
+
+  .page-content {
+    transition: opacity 400ms ease;
+  }
+}
